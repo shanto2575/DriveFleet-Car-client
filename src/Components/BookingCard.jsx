@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BookingCard = ({ cars, isAvailable }) => {
+const BookingCard = ({ cars }) => {
     const { _id,
         carName,
         carType,
@@ -12,47 +12,43 @@ const BookingCard = ({ cars, isAvailable }) => {
         availabilityStatus,
     } = cars;
     return (
-        <div>
-            <div className="bg-white shadow-md rounded-2xl p-6 space-y-6 border">
-                <div className="pt-4 space-y-4">
-                    <h3 className="text-lg font-semibold">Book This Car</h3>
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-600">
-                            Driver Needed
-                        </label>
-                        <select
-                            className="w-full border rounded-xl p-2"
-                            name="driverNeeded"
-                        >
-                            <option value="no">No</option>
-                            <option value="yes">Yes</option>
-                        </select>
-                    </div>
-                    {/* Special Note */}
-                    <div className="space-y-2">
-                        <label className="text-sm font-medium text-gray-600">
-                            Special Note
-                        </label>
-                        <textarea
-                            className="w-full border rounded-xl p-2"
-                            rows="3"
-                            placeholder="Write any special request..."
-                            name="specialNote"
-                        />
-                    </div>
-                    <button
-                        disabled={availabilityStatus !== "Available"}
-                        className={`w-full py-3 rounded-xl font-semibold transition ${availabilityStatus === "Available"
-                            ? "bg-black text-white hover:bg-gray-800"
-                            : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                            }`}
-                    >
-                        Book Now
-                    </button>
-
-                </div>
-
+        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 space-y-6 text-white shadow-lg">
+            <h3 className="text-xl font-semibold">
+                Book This Car
+            </h3>
+            <div className="space-y-2">
+                <label className="text-sm text-gray-300">
+                    Driver Needed
+                </label>
+                <select
+                    name="driverNeeded"
+                    className="w-full bg-white/10 border border-white/10 text-white rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                >
+                    <option className="text-black" value="no">No</option>
+                    <option className="text-black" value="yes">Yes</option>
+                </select>
             </div>
+            <div className="space-y-2">
+                <label className="text-sm text-gray-300">
+                    Special Note
+                </label>
+                <textarea
+                    name="specialNote"
+                    rows="3"
+                    placeholder="Write any special request..."
+                    className="w-full bg-white/10 border border-white/10 text-white placeholder-gray-400 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                />
+            </div>
+            <button
+                disabled={availabilityStatus !== "Available"}
+                className={`w-full py-3 rounded-xl font-semibold transition duration-300 ${availabilityStatus === "Available"
+                        ? "bg-cyan-600 hover:bg-cyan-700 text-white"
+                        : "bg-gray-600 text-gray-300 cursor-not-allowed"
+                    }`}
+            >
+                Book Now
+            </button>
+
         </div>
     )
 }

@@ -5,7 +5,8 @@ const ExploreCarsPage = async () => {
     const carsData = await res.json()
 
     return (
-        <div className='w-10/12 mx-auto'>
+        <div className="bg-linear-to-r from-gray-700 via-gray-950 to-gray-700 text-white h-full">
+            <div className='w-10/12 mx-auto '>
             <div className="text-center mb-12 space-y-3">
                 <h1 className="text-4xl lg:text-5xl font-bold">
                     Explore Our <span className='text-orange-500'>Cars</span>
@@ -15,11 +16,12 @@ const ExploreCarsPage = async () => {
                     Find the perfect ride that fits your style and budget.
                 </p>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-2'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-4'>
                 {
                     carsData.map(cars => <CarsCard key={cars._id} cars={cars} />)
                 }
             </div>
+        </div>
         </div>
     )
 }
