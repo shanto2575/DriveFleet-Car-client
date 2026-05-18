@@ -1,4 +1,4 @@
-import BookingCard from '@/Components/BookingCard';
+import { BookNowButton } from '@/Components/BookButtonModal';
 import Image from 'next/image';
 import React from 'react'
 
@@ -70,7 +70,7 @@ const CarsDetailsPage = async ({ params }) => {
                     </div>
                 </div>
                 <div>
-                    <BookingCard cars={cars} isAvailable={isAvailable} />
+                    <BookNowButton cars={cars} isAvailable={isAvailable} />
                 </div>
 
             </div>

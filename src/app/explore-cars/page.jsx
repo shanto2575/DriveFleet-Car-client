@@ -5,7 +5,7 @@ const ExploreCarsPage = async () => {
     const carsData = await res.json()
 
     return (
-        <div className="bg-linear-to-r from-gray-700 via-gray-950 to-gray-700 text-white h-full">
+        <div className="bg-linear-to-r from-gray-700 via-gray-950 to-gray-700 text-white mt-5">
             <div className='w-10/12 mx-auto '>
             <div className="text-center mb-12 space-y-3">
                 <h1 className="text-4xl lg:text-5xl font-bold">
