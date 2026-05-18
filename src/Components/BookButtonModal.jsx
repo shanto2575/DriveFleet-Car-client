@@ -3,23 +3,58 @@
 import { useState } from "react";
 import { Rocket } from "@gravity-ui/icons";
 import { Button, Modal } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
+
 
 export function BookNowButton({ isAvailable, cars }) {
-    const { _id, carName } = cars;
     const [open, setOpen] = useState(false);
+    const { _id,
+        carName,
+        carType,
+        dailyRentPrice,
+        description,
+        imageUrl,
+        pickupLocation,
+        seatCapacity,
+        availabilityStatus,
+    } = cars;
+    const { data: session, isPending, error, refetch } = authClient.useSession()
+    const user = session?.user;
+    // console.log(user)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
 
-        console.log({
-            carId: _id,
-            carName,
-            ...data,
-        });
+        const bookingDate = new Date().toISOString();
 
+        const booking = {
+            userName:user?.name,
+            userId:user?.id,
+            userEmail:user?.email,
+            carName,
+            dailyRentPrice,
+            imageUrl,
+            carType,
+            driverNeeded: data.driverNeeded,
+            specialNote: data.specialNote,
+            bookingDate
+        }
+        const res = await fetch(`http://localhost:5000/booking`, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+        const result = await res.json()
+        // console.log(result)
+        if(result){
+            toast.success('Booking Successful')
+        }
         setOpen(false);
     };
 

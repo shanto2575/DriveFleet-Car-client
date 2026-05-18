@@ -13,6 +13,8 @@ import {
     Separator,
     TextField,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
@@ -27,10 +29,24 @@ const SignUpPage = () => {
             password:user?.password,
             name:user?.name,
             image:user?.image,
-            // callbackURL: "/" 
         });
-        console.log(data,error)
+        // console.log(data,error)
+        if(data){
+            toast.success('SignUp Successful')
+            redirect('/login')
+        }
+        if(error){
+            toast.error(error.message)
+        }
     };
+    const handleSignIn = async () => {
+            const data = await authClient.signIn.social({
+                provider: "google",
+            });
+            if(data){
+                redirect('/')
+            }
+        };
 
     return (
         <div className="min-h-screen flex items-center justify-center
@@ -108,7 +124,9 @@ const SignUpPage = () => {
                             </div>
 
                             <div className="space-y-3">
-                                <Button variant="outline" className="w-full rounded-xl text-white border-gray-500 hover:bg-white/10">
+                                <Button 
+                                onClick={handleSignIn}
+                                variant="outline" className="w-full rounded-xl text-white border-gray-500 hover:bg-white/10">
                                     <FcGoogle /> Continue with Google
                                 </Button>
                                 <Button variant="outline" className="w-full rounded-xl text-white border-gray-500 hover:bg-white/10">
