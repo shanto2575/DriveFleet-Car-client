@@ -1,10 +1,8 @@
-import CarsCardPage from '@/Components/CarsCard';
-import React from 'react'
+import CarsCard from "@/Components/CarsCard"
 
 const ExploreCarsPage = async () => {
     const res = await fetch(`http://localhost:5000/cars`)
-    const cars = await res.json()
-    // console.log(cars)
+    const carsData = await res.json()
 
     return (
         <div className='w-10/12 mx-auto'>
@@ -19,7 +17,7 @@ const ExploreCarsPage = async () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-2'>
                 {
-                    cars.map(cars => <CarsCardPage key={cars._id} cars={cars} />)
+                    carsData.map(cars => <CarsCard key={cars._id} cars={cars} />)
                 }
             </div>
         </div>
