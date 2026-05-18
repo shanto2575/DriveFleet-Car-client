@@ -47,36 +47,6 @@ export default function Navbar() {
                         </li>
                     ))}
                 </ul>
-                {/* <div className="relative">
-                    <button
-                        onClick={() => setOpen(!open)}
-                        className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-xl text-white transition"
-                    >
-                        <User size={18} />
-                        Profile
-                    </button>
-
-                    {open && (
-                        <div className="absolute right-0 mt-3 w-56 bg-gray-900 border border-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden">
-
-                            <Link href="/add-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
-                                <CarFront size={18} /> Add Car
-                            </Link>
-
-                            <Link href="/my-bookings" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
-                                <CalendarCheck size={18} /> My Bookings
-                            </Link>
-
-                            <Link href="/my-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
-                                <CarFront size={18} /> My Added Cars
-                            </Link>
-                            <div className="border-t border-white/10" />
-                            <button className="flex items-center gap-3 w-full px-4 py-3 hover:bg-red-500/20 text-red-400">
-                                <LogOut size={18} /> Logout
-                            </button>
-                        </div>
-                    )}
-                </div> */}
                 <div className="relative">
                     {!user && (
                         <Link href="/login">
@@ -98,10 +68,8 @@ export default function Navbar() {
                                 </Avatar>
                                 <span className="hidden sm:block">{user?.name}</span>
                             </button>
-
                             {open && (
                                 <div className="absolute right-0 mt-3 w-56 bg-gray-900 border border-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden">
-
                                     <div className="px-4 py-1 border-b border-white/10">
                                         <p className="text-white font-semibold">{user?.name}</p>
                                         <p className="text-gray-400 text-sm">{user?.email}</p>
@@ -131,7 +99,6 @@ export default function Navbar() {
                             )}
                         </>
                     )}
-
                 </div>
 
             </div>

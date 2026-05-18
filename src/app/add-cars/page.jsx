@@ -1,5 +1,6 @@
 'use client'
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react'
+import { redirect } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
 
@@ -20,6 +21,7 @@ const AddCarsPage = () => {
         // console.log(data)
         if (data) {
             toast.success('Cars Add Successfuly')
+            redirect('/explore-cars')
         }
 
     }
