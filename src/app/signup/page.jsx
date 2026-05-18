@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
     Button,
     Description,
@@ -16,11 +17,19 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 const SignUpPage = () => {
-    const onSubmit = (e) => {
+    const onSubmit =async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const user = Object.fromEntries(formData.entries());
         console.log(user);
+        const { data, error } = await authClient.signUp.email({
+            email:user?.email,
+            password:user?.password,
+            name:user?.name,
+            image:user?.image,
+            // callbackURL: "/" 
+        });
+        console.log(data,error)
     };
 
     return (
@@ -87,7 +96,7 @@ const SignUpPage = () => {
                             </FieldGroup>
 
                             <Fieldset.Actions>
-                                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-xl">
+                                <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-xl">
                                     Create Account
                                 </Button>
                             </Fieldset.Actions>
