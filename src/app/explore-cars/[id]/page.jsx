@@ -1,10 +1,20 @@
 import { BookNowButton } from '@/Components/BookButtonModal';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react'
 
 const CarsDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const res = await fetch(`http://localhost:5000/cars/${id}`)
+    const {token}=await auth.api.getToken({
+        headers:await headers()
+    })
+    // console.log(token)
+    const res = await fetch(`http://localhost:5000/cars/${id}`,{
+        headers:{
+            authorization:`Bearer ${token}`
+        }
+    })
     const cars = await res.json()
     const { _id,
         carName,
