@@ -115,7 +115,7 @@ export default function Navbar() {
                                         <CalendarCheck  /> My Bookings
                                     </Link>
 
-                                    <Link href="/my-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                    <Link href="/my-added-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
                                         <CarFront  /> My Added Cars
                                     </Link>
                                     <div className="border-t border-white/10" />

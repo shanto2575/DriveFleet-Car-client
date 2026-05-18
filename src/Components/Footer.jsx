@@ -40,8 +40,8 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             {[
                                 { name: "Home", path: "/" },
-                                { name: "Explore Cars", path: "/explore" },
-                                { name: "Add Car", path: "/add-car" },
+                                { name: "Explore Cars", path: "/explore-cars" },
+                                { name: "Add Car", path: "/add-cars" },
                                 { name: "My Bookings", path: "/my-bookings" },
                             ].map((item, i) => (
                                 <li key={i}>
