@@ -1,56 +1,71 @@
-"use client";
-
-import { useState } from "react";
+"use client"
 import Link from "next/link";
+import { useState } from "react";
+import { User, LogOut, CarFront, CalendarCheck } from "lucide-react";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const navLinks = [
+        { name: "Home", path: "/" },
+        { name: "Explore Cars", path: "/explore-cars" },
+        { name: "My Bookings", path: "/my-bookings" },
+        { name: "Add Cars", path: "/add-cars" },
+        { name: "Login", path: "/login" },
+        { name: "SignUp", path: "/signup" },
+    ];
 
     return (
-        <nav className="flex bg-black items-center justify-between px-6 py-4 shadow-md">
+        <nav className="sticky top-0 z-50 backdrop-blur-xl bg-linear-to-r from-gray-900/90 via-black/90 to-gray-900/90 border-b border-white/10 shadow-lg">
+            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-            <h1 className="text-xl font-bold text-white">DriveFleet</h1>
-            <ul className="flex gap-5 text-white">
-                <li><Link href="/">Home</Link></li>
-                <li><Link href="/explore-cars">Explore Cars</Link></li>
-                <li><Link href="/my-bookings">My Bookings</Link></li>
-                <li><Link href="/add-cars">Add Cars</Link></li>
-            </ul>
+                <h1 className="text-2xl font-bold bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                    DriveFleet
+                </h1>
 
-            <div className="flex items-center gap-6">
-                {/* Dropdown */}
+                <ul className="hidden md:flex gap-8 text-gray-300 font-medium">
+                    {navLinks.map((link) => (
+                        <li key={link.path}>
+                            <Link
+                                href={link.path}
+                                className="hover:text-white transition relative group"
+                            >
+                                {link.name}
+                                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
                 <div className="relative">
-
-                    {/* Button */}
                     <button
                         onClick={() => setOpen(!open)}
-                        className="px-3 py-2 bg-gray-200 rounded"
+                        className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-xl text-white transition"
                     >
-                        Profile ▾
+                        <User size={18} />
+                        Profile
                     </button>
 
-                    {/* Dropdown Menu */}
                     {open && (
-                        <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md overflow-hidden z-50">
+                        <div className="absolute right-0 mt-3 w-56 bg-gray-900 border border-white/10 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden">
 
-                            <Link className="block px-4 py-2 hover:bg-gray-100" href="/add-cars">
-                                Add Car
+                            <Link href="/add-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                <CarFront size={18} /> Add Car
                             </Link>
 
-                            <Link className="block px-4 py-2 hover:bg-gray-100" href="/my-bookings">
-                                My Bookings
+                            <Link href="/my-bookings" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                <CalendarCheck size={18} /> My Bookings
                             </Link>
 
-                            <Link className="block px-4 py-2 hover:bg-gray-100" href="/my-cars">
-                                My Added Cars
+                            <Link href="/my-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                <CarFront size={18} /> My Added Cars
                             </Link>
-
-                            <button className="w-full text-left px-4 py-2 hover:bg-red-100 text-red-500">
-                                Logout
+                            <div className="border-t border-white/10" />
+                            <button className="flex items-center gap-3 w-full px-4 py-3 hover:bg-red-500/20 text-red-400">
+                                <LogOut size={18} /> Logout
                             </button>
                         </div>
                     )}
                 </div>
+
             </div>
         </nav>
     );
