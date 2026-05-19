@@ -6,22 +6,31 @@ import React from 'react'
 import toast from 'react-hot-toast'
 
 const AddCarsPage = () => {
+    const { data: session } = authClient.useSession()
+        const user = session?.user
+        console.log(user)
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target)
         const carsdata = Object.fromEntries(formData.entries())
         // console.log(data)
-        const {data:tokenData}=await authClient.token()
+        
+
+        carsdata.userEmail = user?.email;
+        carsdata.userId = user?.id;
+        carsdata.userName = user?.name;
+
+        const { data: tokenData } = await authClient.token()
         const res = await fetch(`http://localhost:5000/cars`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
-                authorization:`Bearer ${tokenData?.token}`
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(carsdata)
         })
         const data = await res.json()
-        // console.log(data)
+        console.log(data)
         if (data) {
             toast.success('Cars Add Successfuly')
             redirect('/explore-cars')
