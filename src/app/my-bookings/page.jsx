@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const metadata = {
     title: "My Bookings",
     description:
-        "View and manage your car bookings بسهولة.",
+        "View and manage your car bookings.",
 };
 const MyBookingsPage = async () => {
     const session = await auth.api.getSession({
@@ -23,7 +23,6 @@ const MyBookingsPage = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`)
     const booking = await res.json()
     // console.log(booking)
-    // carName, carType, userEmail, bookingDate, imageUrl, userName
 
 
     return (

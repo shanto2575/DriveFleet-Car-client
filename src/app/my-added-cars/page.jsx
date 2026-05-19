@@ -12,7 +12,7 @@ export const metadata = {
 };
 const MyAddedCars = async () => {
     const session = await auth.api.getSession({
-        headers: await headers() // you need to pass the headers object.
+        headers: await headers() 
     })
     const user = session?.user;
 
@@ -20,7 +20,7 @@ const MyAddedCars = async () => {
         headers: await headers()
     })
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-added-cars/${user?.email}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-added-cars/${user?.id}`, {
         headers: {
             authorization: `Bearer ${token}`
         }

@@ -7,7 +7,8 @@ import { notFound } from 'next/navigation';
 
 
 const CarsDetailsPage = async ({ params }) => {
-    const { id } = await params;
+    const { id } =await  params;
+    // console.log(id)
     const { token } = await auth.api.getToken({
         headers: await headers()
     })
@@ -120,9 +121,6 @@ const CarsDetailsPage = async ({ params }) => {
                         <BookNowButton cars={cars} isAvailable={isAvailable} />
                     </div>
                 </div>
-
-
-
             </div>
 
         </div>
