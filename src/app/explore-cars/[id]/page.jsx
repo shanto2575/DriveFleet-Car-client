@@ -1,20 +1,24 @@
 import { BookNowButton } from '@/Components/BookButtonModal';
+import { CarsCancelAlert } from '@/Components/CarsDelete';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Image from 'next/image';
-import React from 'react'
+import { notFound } from 'next/navigation';
 
 const CarsDetailsPage = async ({ params }) => {
     const { id } = await params;
-    const {token}=await auth.api.getToken({
-        headers:await headers()
+    const { token } = await auth.api.getToken({
+        headers: await headers()
     })
     // console.log(token)
-    const res = await fetch(`http://localhost:5000/cars/${id}`,{
-        headers:{
-            authorization:`Bearer ${token}`
+    const res = await fetch(`http://localhost:5000/cars/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
         }
     })
+    if (!res.ok) {
+        notFound()
+    }
     const cars = await res.json()
     const { _id,
         carName,
@@ -28,7 +32,18 @@ const CarsDetailsPage = async ({ params }) => {
     } = cars;
     const isAvailable = availabilityStatus === "Available";
     return (
-        <div className="max-w-7xl mx-auto px-5 py-10 space-y-10 text-white">
+        <div className="max-w-7xl mx-auto px-5 py-6 space-y-4 text-white">
+            <div className=" text-center space-y-2">
+                <h1 className="text-3xl md:text-4xl font-bold">
+                    {carName}
+                </h1>
+                <p className="text-gray-400 text-sm">
+                    Premium car for your comfortable journey
+                </p>
+            </div>
+            <div className='flex gap-5 justify-end'>
+                <CarsCancelAlert cars={cars} />
+            </div>
             <div className="relative w-full h-[400px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl border border-white/10">
 
                 <Image
