@@ -35,6 +35,7 @@ export function BookNowButton({ isAvailable, cars }) {
             userName:user?.name,
             userId:user?.id,
             userEmail:user?.email,
+            carId:_id,
             carName,
             dailyRentPrice,
             imageUrl,

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { FaCarSide, FaHeadset, FaMoneyBillWave, FaClock } from "react-icons/fa";
+import { FaSackDollar } from "react-icons/fa6";
 
 const features = [
     {
@@ -9,7 +10,7 @@ const features = [
         desc: "From budget rides to luxury cars, choose the perfect vehicle for every trip.",
     },
     {
-        icon: <FaMoneyBillWave size={28} />,
+        icon: <FaSackDollar size={28} />,
         title: "Best Price Guarantee",
         desc: "Transparent pricing with no hidden charges. Get the best deals always.",
     },
@@ -27,7 +28,7 @@ const features = [
 
 export default function WhyChooseUs() {
     return (
-        <section className="w-10/12 mx-auto py-20">
+        <section className="w-10/12 mx-auto mb-10 lg:py-10">
             <div className="text-center mb-14 space-y-4">
                 <h2 className="text-4xl font-bold text-white">Why Choose Us</h2>
                 <p className="text-gray-400 max-w-2xl mx-auto">

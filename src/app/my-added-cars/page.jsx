@@ -11,7 +11,15 @@ const MyAddedCars = async () => {
     })
     const user = session?.user;
 
-    const res = await fetch(`http://localhost:5000/my-added-cars/${user?.email}`)
+    const {token}=await auth.api.getToken({
+        headers:await headers()
+    })
+
+    const res = await fetch(`http://localhost:5000/my-added-cars/${user?.email}`,{
+        headers:{
+            authorization:`Bearer ${token}`
+        }
+    })
     const MyAddedCars = await res.json()
     // console.log(MyAddedCars)
     return (

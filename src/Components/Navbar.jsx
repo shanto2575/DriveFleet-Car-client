@@ -26,9 +26,13 @@ export default function Navbar() {
         setOpen(false);
     }, [user]);
 
+    const colseDropdown=()=>{
+        setOpen(false)
+    }
+
     return (
         <nav className="sticky top-0 z-50 backdrop-blur-xl bg-linear-to-r from-gray-900/90 via-black/90 to-gray-900/90 border-b border-white/10 shadow-lg">
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div className="w-10/12 mx-auto  py-4 flex items-center justify-between">
 
                 <h1 className="text-2xl font-bold bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
                     DriveFleet
@@ -75,15 +79,15 @@ export default function Navbar() {
                                         <p className="text-gray-400 text-sm">{user?.email}</p>
                                     </div>
 
-                                    <Link href="/add-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                    <Link href="/add-cars" onClick={colseDropdown} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
                                         <CarFront  /> Add Car
                                     </Link>
 
-                                    <Link href="/my-bookings" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                    <Link href="/my-bookings" onClick={colseDropdown} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
                                         <CalendarCheck  /> My Bookings
                                     </Link>
 
-                                    <Link href="/my-added-cars" className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
+                                    <Link href="/my-added-cars" onClick={colseDropdown} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
                                         <CarFront  /> My Added Cars
                                     </Link>
                                     <div className="border-t border-white/10" />

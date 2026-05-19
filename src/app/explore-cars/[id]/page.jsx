@@ -41,9 +41,9 @@ const CarsDetailsPage = async ({ params }) => {
                     Premium car for your comfortable journey
                 </p>
             </div>
-            <div className='flex gap-5 justify-end'>
+            {/* <div className='flex gap-5 justify-end'>
                 <CarsCancelAlert cars={cars} />
-            </div>
+            </div> */}
             <div className="relative w-full h-[400px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl border border-white/10">
 
                 <Image

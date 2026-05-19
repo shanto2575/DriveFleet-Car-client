@@ -1,16 +1,20 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { FaTrash } from "react-icons/fa";
 
 export function MyAddedCarsDelete({ myadded }) {
 
     const handleDeleteCars = async (id) => {
+        
+        const {data:tokenData}=await authClient.token()
 
         const res = await fetch(`http://localhost:5000/my-added-cars/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
+                authorization:`Bearer ${tokenData?.token}`
             },
         })
         const data = await res.json()

@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import toast from "react-hot-toast";
@@ -23,10 +24,13 @@ export function MyAddedCarsEdits({ myadded }) {
         const formData = new FormData(e.target)
         const editsdata = Object.fromEntries(formData.entries())
         // console.log(editsdata)
+
+        const {data:tokenData}=await authClient.token()
         const res=await fetch(`http://localhost:5000/my-added-cars/${_id}`,{
             method:'PATCH',
             headers:{
-                'Content-type':'application/json'
+                'Content-type':'application/json',
+                authorization:`Bearer ${tokenData?.token}`
             },
             body:JSON.stringify(editsdata)
         })
@@ -57,17 +61,7 @@ export function MyAddedCarsEdits({ myadded }) {
                         <Modal.Body className="p-6">
                             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl       shadow-xl p-6 lg:p-10">
                                 <form onSubmit={handleSubmit} className="space-y-6">
-                                    <div>
-                                        <label className="text-sm text-gray-300">Car Name</label>
-                                        <input
-                                            type="text"
-                                            name="carName"
-                                            defaultValue={carName}
-                                            placeholder="Toyota Corolla"
-                                            className="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
 
                                         <div>
                                             <label className="text-sm text-gray-300">Daily Rent Price</label>
@@ -76,17 +70,6 @@ export function MyAddedCarsEdits({ myadded }) {
                                                 defaultValue={dailyRentPrice}
                                                 name="dailyRentPrice"
                                                 placeholder="60"
-                                                className="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-                                            />
-                                        </div>
-
-                                        <div>
-                                            <label className="text-sm text-gray-300">Seat Capacity</label>
-                                            <input
-                                                type="number"
-                                                name="seatCapacity"
-                                                defaultValue={seatCapacity}
-                                                placeholder="5"
                                                 className="w-full mt-1 px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                                             />
                                         </div>
@@ -150,7 +133,7 @@ export function MyAddedCarsEdits({ myadded }) {
                                         <Button slot="close" variant="secondary">
                                             Cancel
                                         </Button>
-                                        <Button type="submit" slot="close">Send Message</Button>
+                                        <Button type="submit" slot="close">Save</Button>
                                     </Modal.Footer>
                                 </form>
                             </div>
