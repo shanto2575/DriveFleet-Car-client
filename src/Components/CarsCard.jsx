@@ -60,13 +60,13 @@ const CarsCard = ({ cars }) => {
                         <MapPin size={18} />
                         {pickupLocation}
                     </div>
-                    
+
                 </div>
                 <p className="text-sm text-gray-400 mt-2">
-                        Bookings: <span className="text-orange-400 font-semibold">
-                            {bookingCount || 0}
-                        </span>
-                    </p>
+                    Bookings: <span className="text-orange-400 font-semibold">
+                        {bookingCount || 0}
+                    </span>
+                </p>
                 <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
                     {description}
                 </p>

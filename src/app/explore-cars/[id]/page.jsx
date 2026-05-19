@@ -1,5 +1,4 @@
 import { BookNowButton } from '@/Components/BookButtonModal';
-import { CarsCancelAlert } from '@/Components/CarsDelete';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Image from 'next/image';
@@ -7,7 +6,7 @@ import { notFound } from 'next/navigation';
 
 
 const CarsDetailsPage = async ({ params }) => {
-    const { id } =await  params;
+    const { id } = await params;
     // console.log(id)
     const { token } = await auth.api.getToken({
         headers: await headers()
@@ -31,6 +30,7 @@ const CarsDetailsPage = async ({ params }) => {
         pickupLocation,
         seatCapacity,
         availabilityStatus,
+        bookingCount
     } = cars;
     const isAvailable = availabilityStatus === "Available";
     return (
@@ -43,9 +43,6 @@ const CarsDetailsPage = async ({ params }) => {
                     Premium car for your comfortable journey
                 </p>
             </div>
-            {/* <div className='flex gap-5 justify-end'>
-                <CarsCancelAlert cars={cars} />
-            </div> */}
             <div className="relative w-full h-[400px] md:h-[520px] overflow-hidden rounded-3xl shadow-2xl border border-white/10">
 
                 <Image
@@ -95,6 +92,11 @@ const CarsDetailsPage = async ({ params }) => {
                             <span className="text-cyan-400 ml-2">{pickupLocation}</span>
                         </div>
                     </div>
+                    <p className="text-sm text-gray-400 mt-2">
+                        Bookings: <span className="text-orange-400 font-semibold">
+                            {bookingCount || 0}
+                        </span>
+                    </p>
                 </div>
                 <div className="bg-white/5 border border-white/10 backdrop-blur rounded-2xl p-4 space-y-2 mb-4">
                     <h3 className="text-lg font-semibold text-white">
