@@ -1,32 +1,26 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
-import toast from "react-hot-toast";
-import { MdCancel } from "react-icons/md";
+import { FaTrash } from "react-icons/fa";
 
-export function BookingCancelAlert({ booking }) {
+export function MyAddedCarsDelete({ myadded }) {
 
-    const handleCancelBookin = async (id) => {
-        const { data: tokenData } = await authClient.token()
-        const res = await fetch(`http://localhost:5000/booking/${id}`, {
+    const handleDeleteCars = async (id) => {
+
+        const res = await fetch(`http://localhost:5000/my-added-cars/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
-                authorization: `Bearer ${tokenData?.token}`
             },
         })
         const data = await res.json()
-        if(data){
-            toast.success('Cancel Successfully')
-        }
         // console.log(data)
         window.location.reload()
     }
     return (
         <AlertDialog>
             <Button variant='outline' className={'rounded border-red-400 text-red-500'}>
-                <MdCancel/> Cancel
+                <FaTrash/>Delete
             </Button>
 
             <AlertDialog.Backdrop className="bg-black/60 backdrop-blur-sm">
@@ -46,7 +40,7 @@ export function BookingCancelAlert({ booking }) {
                             <p>
                                 This will permanently cancel booking for{" "}
                                 <strong className="text-white">
-                                    {booking.destinationName}
+                                    {myadded.carsName}
                                 </strong>.
                                 This action cannot be undone.
                             </p>
@@ -63,11 +57,11 @@ export function BookingCancelAlert({ booking }) {
                             </Button>
 
                             <Button
-                                onClick={() => handleCancelBookin(booking._id)}
+                                onClick={() => handleDeleteCars(myadded._id)}
                                 slot="close"
                                 className="w-full bg-red-600 hover:bg-red-700 text-white rounded-xl"
                             >
-                                Confirm Cancel
+                                Confirm Delete
                             </Button>
 
                         </AlertDialog.Footer>

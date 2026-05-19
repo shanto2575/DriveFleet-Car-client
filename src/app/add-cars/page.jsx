@@ -7,19 +7,20 @@ import toast from 'react-hot-toast'
 
 const AddCarsPage = () => {
     const { data: session } = authClient.useSession()
-        const user = session?.user
-        console.log(user)
+    const user = session?.user
+    // console.log(user)
+    const CarsAddedDate = new Date().toISOString();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target)
         const carsdata = Object.fromEntries(formData.entries())
         // console.log(data)
-        
+
 
         carsdata.userEmail = user?.email;
         carsdata.userId = user?.id;
         carsdata.userName = user?.name;
-
+        carsdata.AddedDate=CarsAddedDate;
         const { data: tokenData } = await authClient.token()
         const res = await fetch(`http://localhost:5000/cars`, {
             method: 'POST',

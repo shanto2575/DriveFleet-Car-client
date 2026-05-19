@@ -94,9 +94,33 @@ const CarsDetailsPage = async ({ params }) => {
                         </div>
                     </div>
                 </div>
-                <div>
-                    <BookNowButton cars={cars} isAvailable={isAvailable} />
+                <div className="bg-white/5 border border-white/10 backdrop-blur rounded-2xl p-4 space-y-2 mb-4">
+                    <h3 className="text-lg font-semibold text-white">
+                        Quick Info
+                    </h3>
+
+                    <div className="flex justify-between text-sm text-gray-300">
+                        <span>Price per day</span>
+                        <span className="text-cyan-400 font-semibold">
+                            ${dailyRentPrice}
+                        </span>
+                    </div>
+
+                    <div className="flex justify-between text-sm text-gray-300">
+                        <span>Location</span>
+                        <span>{pickupLocation}</span>
+                    </div>
+
+                    <div className="flex justify-between text-sm text-gray-300">
+                        <span>Seats</span>
+                        <span>{seatCapacity}</span>
+                    </div>
+                    <div>
+                        <BookNowButton cars={cars} isAvailable={isAvailable} />
+                    </div>
                 </div>
+
+
 
             </div>
 

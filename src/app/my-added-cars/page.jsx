@@ -1,4 +1,6 @@
 
+import { MyAddedCarsDelete } from '@/Components/MyAddedCarsDelete';
+import { MyAddedCarsEdits } from '@/Components/MyAddedCarsEdits';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import Image from 'next/image';
@@ -25,18 +27,19 @@ const MyAddedCars = async () => {
                         <div className='space-y-5'>
                             {
                                 MyAddedCars.map(myadded => <div key={myadded._id} className='border rounded-2xl p-5 my-5'>
-                                    <div className='flex gap-10 '>
+                                    <div className='flex gap-10  '>
                                         <Image
                                             src={myadded?.imageUrl}
                                             alt={myadded.carName}
                                             width={300}
                                             height={300}
+                                            className='w-48 h-48'
                                         />
                                         <div className='flex flex-1 flex-col justify-between'>
                                             <h1 className='text-2xl font-bold'>Car: <span className='text-orange-500 font-bold'>{myadded.carName}</span></h1>
 
                                             <p>
-                                                Departure Date: {new Date(myadded.bookingDate).toLocaleDateString("en-GB", {
+                                                Departure Date: {new Date(myadded.AddedDate).toLocaleDateString("en-GB", {
                                                     day: "numeric",
                                                     month: "long",
                                                     year: "numeric",
@@ -47,8 +50,8 @@ const MyAddedCars = async () => {
                                             <div className='flex justify-between items-center'>
                                                 <p className='text-xl text-cyan-500'>Daily RentPrice: <span className='text-red-500 font-bold'>${myadded.dailyRentPrice}</span></p>
                                                 <div className='flex items-center justify-between gap-5'>
-                                                    {/* <BookingCancelAlert booking={booking} /> */}
-
+                                                    <MyAddedCarsDelete myadded={myadded}/>
+                                                    <MyAddedCarsEdits myadded={myadded}/>
                                                 </div>
                                             </div>
                                         </div>
