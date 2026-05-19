@@ -20,7 +20,7 @@ const MyBookingsPage = async () => {
         return <div>Please login first</div>;
     }
 
-    const res = await fetch(`http://localhost:5000/booking/${user?.id}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`)
     const booking = await res.json()
     // console.log(booking)
     // carName, carType, userEmail, bookingDate, imageUrl, userName

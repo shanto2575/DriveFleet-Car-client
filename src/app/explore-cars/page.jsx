@@ -7,11 +7,14 @@ const ExploreCarsPage = () => {
     const [carsData, setCarsData] = useState([]);
     const [search, setSearch] = useState("");
     const [type, setType] = useState("All");
+    const [loading, setloading] = useState(true)
 
     const fetchCars = async () => {
-        const res = await fetch(`http://localhost:5000/cars?search=${search}&type=${type}`);
+        setloading(true)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars?search=${search}&type=${type}`);
         const data = await res.json();
         setCarsData(data);
+        setloading(false)
     };
     useEffect(() => {
         const delaySearch = setTimeout(() => {
@@ -49,11 +52,17 @@ const ExploreCarsPage = () => {
                         <option className="text-black">Luxury</option>
                     </select>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-4'>
-                    {
-                        carsData.map(cars => <CarsCard key={cars._id} cars={cars} />)
-                    }
-                </div>
+                {loading ? (
+                    <div className="flex items-center justify-center h-64">
+                        <div className="w-14 h-14 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 pb-4">
+                        {carsData.map(cars => (
+                            <CarsCard key={cars._id} cars={cars} />
+                        ))}
+                    </div>
+                )}
             </div>
         </div>
     )

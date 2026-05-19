@@ -11,7 +11,7 @@ export function MyAddedCarsDelete({ myadded }) {
 
         const { data: tokenData } = await authClient.token()
 
-        const res = await fetch(`http://localhost:5000/my-added-cars/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-added-cars/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',

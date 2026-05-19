@@ -26,7 +26,7 @@ export function MyAddedCarsEdits({ myadded }) {
         // console.log(editsdata)
 
         const {data:tokenData}=await authClient.token()
-        const res=await fetch(`http://localhost:5000/my-added-cars/${_id}`,{
+        const res=await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/my-added-cars/${_id}`,{
             method:'PATCH',
             headers:{
                 'Content-type':'application/json',
