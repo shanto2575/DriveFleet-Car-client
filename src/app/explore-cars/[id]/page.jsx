@@ -5,6 +5,7 @@ import { headers } from 'next/headers';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
+
 const CarsDetailsPage = async ({ params }) => {
     const { id } = await params;
     const { token } = await auth.api.getToken({

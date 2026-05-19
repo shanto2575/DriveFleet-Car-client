@@ -6,27 +6,39 @@ import { Star } from "lucide-react";
 
 const testimonials = [
     {
+        name: "Nusrat Jahan",
+        image: "https://randomuser.me/api/portraits/women/26.jpg",
+        review: "Affordable price and great customer support!",
+        rating: 5,
+    },
+    {
         name: "Rahim Ahmed",
-        image: "https://randomuser.me/api/portraits/men/32.jpg",
+        image: "https://randomuser.me/api/portraits/men/3.jpg",
         review: "Amazing service! Booking was super easy and smooth.",
         rating: 5,
     },
     {
         name: "Nusrat Jahan",
-        image: "https://randomuser.me/api/portraits/women/44.jpg",
+        image: "https://randomuser.me/api/portraits/women/46.jpg",
         review: "Affordable price and great customer support!",
         rating: 5,
     },
     {
         name: "Tanvir Hasan",
-        image: "https://randomuser.me/api/portraits/men/65.jpg",
+        image: "https://randomuser.me/api/portraits/men/85.jpg",
         review: "Car was clean and pickup was very easy.",
         rating: 4,
     },
     {
         name: "Mehedi Hasan",
-        image: "https://randomuser.me/api/portraits/men/12.jpg",
+        image: "https://randomuser.me/api/portraits/men/1.jpg",
         review: "Best car rental experience in Bangladesh!",
+        rating: 5,
+    },
+    {
+        name: "Nusrat Jahan",
+        image: "https://randomuser.me/api/portraits/women/2.jpg",
+        review: "Affordable price and great customer support!",
         rating: 5,
     },
 ];
@@ -42,9 +54,7 @@ export default function Testimonials() {
                     Real feedback from happy customers who trusted our service.
                 </p>
             </div>
-
             <div className="relative w-full overflow-hidden">
-
                 <motion.div
                     className="flex gap-8 w-max"
                     animate={{ x: ["0%", "-50%"] }}

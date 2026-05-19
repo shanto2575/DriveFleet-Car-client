@@ -2,6 +2,7 @@
 import CarsCard from "@/Components/CarsCard"
 import { useEffect, useState } from "react";
 
+
 const ExploreCarsPage = () => {
     const [carsData, setCarsData] = useState([]);
     const [search, setSearch] = useState("");
@@ -13,7 +14,10 @@ const ExploreCarsPage = () => {
         setCarsData(data);
     };
     useEffect(() => {
-        fetchCars();
+        const delaySearch = setTimeout(() => {
+            fetchCars();
+        }, 500);
+        return () => clearTimeout(delaySearch);
     }, [search, type]);
 
 
@@ -34,7 +38,7 @@ const ExploreCarsPage = () => {
                         type="text"
                         placeholder="Search car name..."
                         className="px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white w-full"
-                        onChange={(e) => setSearch(e.target.value)}/>
+                        onChange={(e) => setSearch(e.target.value)} />
                     <select
                         className="px-4 py-3 rounded-xl bg-white/10 border border-white/10 text-white"
                         onChange={(e) => setType(e.target.value)}>

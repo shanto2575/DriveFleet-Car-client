@@ -26,18 +26,18 @@ export default function Navbar() {
         setOpen(false);
     }, [user]);
 
-    const colseDropdown=()=>{
+    const colseDropdown = () => {
         setOpen(false)
     }
 
     return (
         <nav className="sticky top-0 z-50 backdrop-blur-xl bg-linear-to-r from-gray-900/90 via-black/90 to-gray-900/90 border-b border-white/10 shadow-lg">
             <div className="w-10/12 mx-auto  py-4 flex items-center justify-between">
-
-                <h1 className="text-2xl font-bold bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-                    DriveFleet
-                </h1>
-
+                <Link href={'/'}>
+                    <h1 className="text-2xl font-bold bg-linear-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                        DriveFleet
+                    </h1>
+                </Link>
                 <ul className="hidden md:flex gap-8 text-gray-300 font-medium">
                     {navLinks.map((link) => (
                         <li key={link.path}>
@@ -78,17 +78,14 @@ export default function Navbar() {
                                         <p className="text-white font-semibold">{user?.name}</p>
                                         <p className="text-gray-400 text-sm">{user?.email}</p>
                                     </div>
-
                                     <Link href="/add-cars" onClick={colseDropdown} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
-                                        <CarFront  /> Add Car
+                                        <CarFront /> Add Car
                                     </Link>
-
                                     <Link href="/my-bookings" onClick={colseDropdown} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
-                                        <CalendarCheck  /> My Bookings
+                                        <CalendarCheck /> My Bookings
                                     </Link>
-
                                     <Link href="/my-added-cars" onClick={colseDropdown} className="flex items-center gap-3 px-4 py-3 hover:bg-white/10 text-gray-300">
-                                        <CarFront  /> My Added Cars
+                                        <CarFront /> My Added Cars
                                     </Link>
                                     <div className="border-t border-white/10" />
                                     <button

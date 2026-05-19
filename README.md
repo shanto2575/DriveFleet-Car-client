@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+DriveFleet – Car Rental Platform
 
-## Getting Started
+Live Website: 
 
-First, run the development server:
+##Website Features##
+1.Secure Authentication System:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Users can register and login using Email/Password and Google Login. JWT with HTTPOnly cookies protects private routes and APIs.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2.Explore Cars with Smart Search & Filter:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Users can search cars by name using MongoDB $regex and filter cars by type (SUV, Sedan, Hatchback, Luxury).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+3.Add, Update & Delete Car Listings:
 
-To learn more about Next.js, take a look at the following resources:
+Logged-in users can add their own cars and manage them from the My Added Cars profile.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4.Car Booking System:
 
-## Deploy on Vercel
+Users can book cars with driver option and special notes. Booking count automatically increases using MongoDB $inc.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5.Protected Private Routes:
+
+JWT middleware ensures only logged-in users can access private pages and APIs
+
+6.Fully Responsive Modern UI:
+
+Built with Tailwind CSS and Framer Motion for smooth animation and mobile-first design.

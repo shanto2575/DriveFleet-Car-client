@@ -13,16 +13,13 @@ import { MdAddCall } from "react-icons/md";
 export default function Footer() {
     return (
         <footer className="relative text-gray-300 ">
-
             <div className="absolute inset-0 bg-linear-to-r from-black via-gray-900 to-black"></div>
-
             <div className="relative w-10/12 mx-auto px-6 py-14 flex flex-col justify-between">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div>
                         <h2 className="text-3xl font-bold text-white">
                             DriveFleet Cars
                         </h2>
-
                         <p className="mt-4 text-sm text-gray-400 leading-relaxed">
                             AI-powered car rental platform where users can explore smart
                             recommendations, book cars instantly and manage rentals easily.
@@ -36,7 +33,6 @@ export default function Footer() {
                         <h3 className="text-lg font-semibold text-white mb-5">
                             Useful Links
                         </h3>
-
                         <ul className="space-y-3 text-sm">
                             {[
                                 { name: "Home", path: "/" },

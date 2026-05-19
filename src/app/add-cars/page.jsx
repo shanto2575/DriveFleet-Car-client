@@ -1,6 +1,5 @@
 'use client'
 import { authClient } from '@/lib/auth-client'
-import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import toast from 'react-hot-toast'
@@ -59,7 +58,6 @@ const AddCarsPage = () => {
                             Fill in the details carefully to list your car
                         </p>
                     </div>
-
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
                             <label className="text-sm text-gray-300">Car Name</label>

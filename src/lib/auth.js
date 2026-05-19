@@ -14,19 +14,23 @@ export const auth = betterAuth({
         enabled: true,
     },
     socialProviders: {
-        google: { 
-            clientId: process.env.GOOGLE_CLIENT_ID, 
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET, 
-        }, 
+        google: {
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        },
+        github: {
+            clientId: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        },
     },
-    session:{
-        cookieCache:{
-            enabled:true,
-            strategy:'jwt',
-            maxAge:10 * 24 * 60 * 60
+    session: {
+        cookieCache: {
+            enabled: true,
+            strategy: 'jwt',
+            maxAge: 10 * 24 * 60 * 60
         }
     },
-    plugins:[
+    plugins: [
         jwt()
     ]
 });
