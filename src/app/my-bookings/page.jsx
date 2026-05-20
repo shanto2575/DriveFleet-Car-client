@@ -19,8 +19,14 @@ const MyBookingsPage = async () => {
     if (!user?.id) {
         return <div>Please login first</div>;
     }
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`)
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`,{
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const booking = await res.json()
     // console.log(booking)
 
@@ -50,7 +56,7 @@ const MyBookingsPage = async () => {
                                         alt={booking.carName}
                                         width={300}
                                         height={300}
-                                        className="w-full h-auto rounded-xl object-cover"
+                                        className="w-48 h-48 rounded-xl object-cover"
                                     />
                                 </div>
                                 <div className="flex flex-1 flex-col justify-between gap-4">

@@ -32,10 +32,10 @@ export function BookNowButton({ isAvailable, cars }) {
         const bookingDate = new Date().toISOString();
 
         const booking = {
-            userName:user?.name,
-            userId:user?.id,
-            userEmail:user?.email,
-            carId:_id,
+            userName: user?.name,
+            userId: user?.id,
+            userEmail: user?.email,
+            carId: _id,
             carName,
             dailyRentPrice,
             imageUrl,
@@ -44,16 +44,18 @@ export function BookNowButton({ isAvailable, cars }) {
             specialNote: data.specialNote,
             bookingDate
         }
+        const { data: tokenData } = await authClient.token()
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                authorization: `Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(booking)
         })
         const result = await res.json()
         // console.log(result)
-        if(result){
+        if (result) {
             toast.success('Booking Successful')
         }
         setOpen(false);
