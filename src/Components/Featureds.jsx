@@ -1,9 +1,12 @@
 import React from 'react'
 import FeaturedCards from './FeaturedCards'
+import { Button } from '@heroui/react'
+import Link from 'next/link'
+import { FaAngleDoubleRight } from 'react-icons/fa'
 
 const Featureds = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/featured`, {
-        cache:'no-store'
+        cache: 'no-store'
     })
     const featured = await res.json()
     // console.log(featured)
@@ -22,6 +25,13 @@ const Featureds = async () => {
                 {
                     featured.map(cars => <FeaturedCards key={cars._id} cars={cars} />)
                 }
+            </div>
+            <div className='flex justify-center mt-9 mb-6'>
+                <Link href="/explore-cars">
+                    <Button size='lg' className="bg-cyan-600 hover:bg-cyan-700 text-white rounded px-10">
+                        Explore All Cars <FaAngleDoubleRight className='text-pink-700'/>
+                    </Button>
+                </Link>
             </div>
         </div>
     )

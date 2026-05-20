@@ -11,23 +11,23 @@ const roboto = Roboto({
 export const metadata = {
   title: "DriveFleet | Car Rental Service",
   description:
-    "DriveFleet is a modern car rental platform where you can explore cars, book rides, and manage bookings بسهولة and securely.",
+    "DriveFleet is a modern car rental platform where you can explore cars, book rides, and manage bookings  and securely.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${roboto.className}  h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-linear-to-r from-gray-700 via-gray-950 to-gray-700 text-white">
-        <Navbar/>
-        <main className="flex-1">
-          {children}
-        </main>
-        <Footer/>
+      className={`${roboto.className}  h-full antialiased `}>
+      <body className="min-h-full flex flex-col text-white bg-linear-to-r from-gray-700 via-gray-950 to-gray-700">
+          <Navbar />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
         <Toaster />
-        </body>
+      </body>
     </html>
   );
 }
+

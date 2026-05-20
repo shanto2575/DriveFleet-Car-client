@@ -28,15 +28,15 @@ const MyAddedCars = async () => {
     const MyAddedCars = await res.json()
     // console.log(MyAddedCars)
     return (
-        <div className='max-w-7xl mx-auto mt-5'>
+        <div className='max-w-7xl mx-auto mt-5 p-2 lg:p-0'>
             <div className='text-center  lg:text-start'>
                 <h1 className='text-3xl font-bold'>My Added Cars</h1>
                 <p className='text-gray-400'>Manage and view your upcoming travel plans</p>
             </div>
             {
                 MyAddedCars.length === 0 ? (
-                    <div className='flex items-center justify-center h-[600px] border rounded-2xl my-5'>
-                        <p className="text-gray-400 text-5xl font-extrabold">No cars added yet</p>
+                    <div className='flex items-center justify-center h-[600px] border rounded-2xl my-5 p-2'>
+                        <p className="text-gray-400 text-xl lg:text-5xl font-extrabold">No cars added yet</p>
                     </div>
                 ) : (
                     <div className='space-y-5 p-4 '>
